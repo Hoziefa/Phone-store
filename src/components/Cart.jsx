@@ -8,7 +8,7 @@ const handleDeleteProduct = (carts, setCarts, products, setProducts, cartId) => 
     alertMessage(`"${carts.find(({ id }) => id === cartId).title}" Deleted Successfully!`);
 };
 
-const getCart = (type, cart) => ({
+const cartQuantity = (type, cart) => ({
     ...cart,
     count: type === "inc" ? cart.count + 1 : cart.count - 1,
     get total() {
@@ -17,7 +17,7 @@ const getCart = (type, cart) => ({
 });
 
 const handleQuantity = (type, cartId, carts, setCarts) => {
-    setCarts(carts.map(cart => (cart.id === cartId ? getCart(type, cart) : cart)));
+    setCarts(carts.map(cart => (cart.id === cartId ? cartQuantity(type, cart) : cart)));
 };
 
 const calcProductsTotals = carts => ({
@@ -37,7 +37,7 @@ const clearCart = (setCarts, products, setProducts, push) => {
     push("/");
 };
 
-const renderTbody = ({ id, title, img, price, count, total }, carts, setCarts, products, setProducts) => {
+const renderCart = ({ id, title, img, price, count, total }, carts, setCarts, products, setProducts) => {
     return (
         <li key={id} className="">
             <div className="product-img">
@@ -122,7 +122,7 @@ const Cart = ({ history: { push } }) => {
                     </div>
                 </div>
 
-                <ul>{carts.map(cart => renderTbody(cart, carts, setCarts, products, setProducts))}</ul>
+                <ul>{carts.map(cart => renderCart(cart, carts, setCarts, products, setProducts))}</ul>
             </div>
 
             <div className="totals-container">

@@ -3,7 +3,7 @@ import productContext from "../contexts/productContext";
 import { alertMessage } from "../utils";
 
 const addToCart = (carts, setCarts, product, products, setProducts, setProductData) => {
-    if (carts.some(({ id }) => id === product.id)) return alertMessage(`"${product.title}" Already in Cart`);
+    if (product.inCart) return alertMessage(`"${product.title}" Already in Cart`);
 
     setProducts(products.map(prod => (prod.id === product.id ? { ...prod, inCart: true } : prod)));
 
@@ -13,8 +13,11 @@ const addToCart = (carts, setCarts, product, products, setProducts, setProductDa
 };
 
 const AddToCart = ({ product, content: [contentInCart, contentNotInCart] }) => {
-    const { products: [products, setProducts] = [], carts: [carts, setCarts] = [] } = useContext(productContext);
-    const { productData: [, setProductData] = [] } = useContext(productContext);
+    const {
+        products: [products, setProducts],
+        carts: [carts, setCarts],
+        productData: [, setProductData],
+    } = useContext(productContext);
 
     return (
         <button
