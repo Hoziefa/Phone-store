@@ -817,6 +817,7 @@ a:hover {
         small {
             font-family: $oswald-font;
             font-weight: 600;
+            margin: 0;
         }
 
         .clear-cart {
@@ -834,6 +835,62 @@ a:hover {
             &:active {
                 box-shadow: 0 5px 0 $primary-color !important;
                 transform: translateY(3px);
+            }
+        }
+
+        .paypal-buy-now-button {
+            display: inline-flex;
+            position: relative;
+            background: #ffc439;
+            border-radius: 5px;
+            border: 1px solid #dc911d;
+            box-shadow: inset 0 1px 0 0 #ffd699;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 0 23px;
+            height: 42px;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: -1px;
+                bottom: -1px;
+                left: -1px;
+                right: -1px;
+                border-radius: 5px;
+                background: linear-gradient(to bottom, #ffaf00 0%, #dc911d 100%);
+                z-index: 1;
+            }
+
+            &:after {
+                content: "";
+                border-radius: 4px;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: #ffc439;
+                box-shadow: inset 0 1px 0 0 #ffd699;
+                z-index: 1;
+            }
+
+            small {
+                padding-top: 3px;
+                padding-right: 7px;
+                text-shadow: 0 1px 0 #ffd699;
+                z-index: 2;
+            }
+
+            svg {
+                filter: drop-shadow(0 1px 0 #ffffff);
+                z-index: 2;
             }
         }
     }
