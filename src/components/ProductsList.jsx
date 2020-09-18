@@ -11,11 +11,7 @@ const ProductsList = () => {
         <div className="Products-list container">
             <h2>Our Products</h2>
 
-            <ul className="products-container">
-                {products.map(product => (
-                    <Product key={product.id} product={product} />
-                ))}
-            </ul>
+            <ul className="products-container">{products.map(Product)}</ul>
         </div>
     );
 };

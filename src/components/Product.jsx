@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AddToCart from "./AddToCart";
 
-const Product = ({ product }) => {
+const Product = product => {
     const { id, title, img, price } = product;
 
     return (
-        <li className="Product">
+        <li className="Product" key={id}>
             <AddToCart product={product} content={["In Cart", <i className="fas fa-cart-plus"></i>]} />
 
             <Link to={`/details/${id}`}>
