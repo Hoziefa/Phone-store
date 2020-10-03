@@ -1,11 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Product from "./Product";
 import productContext from "../contexts/productContext";
 
 const ProductsList = () => {
     const [products] = useContext(productContext).products;
-
-    useState();
 
     return (
         <div className="Products-list container">
